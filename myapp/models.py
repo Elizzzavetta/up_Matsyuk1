@@ -2,13 +2,12 @@ from django.db import models
 
 class User(models.Model):
     id = models.AutoField(primary_key=True, verbose_name='ID')
-    email = models.EmailField(verbose_name='Почта')
-    cart_id = models.IntegerField(null=True, blank=True, verbose_name='Корзина')  # Если корзина может быть пустой
+    email = models.EmailField(verbose_name='Почта') 
     first_name = models.CharField(max_length=30, verbose_name='Имя')
     last_name = models.CharField(max_length=30, verbose_name='Фамилия')
-    phone = models.CharField(max_length=15, verbose_name='Телефон')  # Можно настроить длину под формат телефона
+    phone = models.CharField(max_length=15, verbose_name='Телефон')  
     registration_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата регистрации')
-    my_promotions_id = models.IntegerField(null=True, blank=True, verbose_name='Мои акции')  # Если акции могут быть пустыми
+    promotion_id = models.ForeignKey('Promotion', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Акции')  
 
     class Meta:
         verbose_name = 'Пользователь'
@@ -39,10 +38,10 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     category = models.CharField(max_length=100, verbose_name='Категория')
     brand = models.CharField(max_length=100, verbose_name='Бренд')
-    article = models.CharField(max_length=50, unique=True, verbose_name='Артикул')  # Уникальный артикул
+    article = models.CharField(max_length=50, unique=True, verbose_name='Артикул')  
     recommended_age = models.CharField(max_length=50, verbose_name='Рекомендуемый возраст')
     characteristics = models.TextField(verbose_name='Характеристики')
-    reviews_id = models.IntegerField(null=True, blank=True, verbose_name='Отзывы')  # Если отзывы могут быть пустыми
+    reviews_id = models.IntegerField(null=True, blank=True, verbose_name='Отзывы')  
 
     class Meta:
         verbose_name = 'Товар'
@@ -68,9 +67,9 @@ class Promotion(models.Model):
 
 class Review(models.Model):
     id = models.AutoField(primary_key=True, verbose_name='ID')
-    product_id = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Товар')  # Ссылка на модель Product
-    user_id = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='Пользователь')  # Ссылка на модель User
-    rating = models.IntegerField(verbose_name='Оценка')  # Оценка от 1 до 5, например
+    product_id = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Товар')  
+    user_id = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='Пользователь')  
+    rating = models.IntegerField(verbose_name='Оценка') 
     text = models.TextField(verbose_name='Текст отзыва')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
 
