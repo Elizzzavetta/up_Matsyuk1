@@ -41,7 +41,7 @@ class Product(models.Model):
     article = models.CharField(max_length=50, unique=True, verbose_name='Артикул')  
     recommended_age = models.CharField(max_length=50, verbose_name='Рекомендуемый возраст')
     characteristics = models.TextField(verbose_name='Характеристики')
-    reviews_id = models.IntegerField(null=True, blank=True, verbose_name='Отзывы')  
+    reviews_id = models.ForeignKey('Review', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Отзывы')
 
     class Meta:
         verbose_name = 'Товар'
