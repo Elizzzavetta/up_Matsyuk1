@@ -68,7 +68,7 @@ class Promotion(models.Model):
 class Review(models.Model):
     id = models.AutoField(primary_key=True, verbose_name='ID')
     product_id = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Товар')  
-    user_id = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='Пользователь')  
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')  
     rating = models.IntegerField(verbose_name='Оценка') 
     text = models.TextField(verbose_name='Текст отзыва')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
