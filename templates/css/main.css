@@ -1,0 +1,54 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat+Alternates:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+.top-banner {
+    background-color: rgba(151, 118, 67, 0.91); 
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    font-family: Montserrat Alternates;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1000;
+}
+
+.header {
+    background-color: #fff;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* Логотип */
+.header_logo {
+    text-align: center;
+}
+
+.logo-image {
+    height: 80px;
+    width: auto;
+    max-width: 250px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
